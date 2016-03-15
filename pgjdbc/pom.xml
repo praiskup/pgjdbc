@@ -4,7 +4,7 @@
     <groupId>org.postgresql</groupId>
     <artifactId>pgjdbc-core-parent</artifactId>
     <version>1.0.5</version>
-    <relativePath />
+    <relativePath>pgjdbc-parent-poms/pgjdbc-core-parent/pom.xml</relativePath>
   </parent>
 
   <artifactId>postgresql</artifactId>
@@ -113,6 +113,59 @@
         </plugins>
       </build>
     </profile>
+
+
+    <profile>
+      <id>excludeOsgiFiles</id>
+      <activation>
+        <property>
+          <name>osgiEnabled</name>
+          <value>!true</value>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+              <excludes>
+                <exclude>org/postgresql/osgi/*.java</exclude>
+                <exclude>*/PGDataSourceFactoryTest.java</exclude>
+                <exclude>src/test/java/org/postgresql/test/osgi/PGDataSourceFactoryTest.java</exclude>
+                <exclude>org/postgresql/test/osgi/PGDataSourceFactoryTest.java</exclude>
+              </excludes>
+            </configuration>
+          </plugin>
+
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>excludeWaffleFiles</id>
+      <activation>
+        <property>
+          <name>waffleEnabled</name>
+          <value>!true</value>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+              <excludes>
+                <exclude>org/postgresql/sspi/SSPIClient.java</exclude>
+                <exclude>org/postgresql/sspi/NTDSAPIWrapper.java</exclude>
+              </excludes>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
   </profiles>
 
   <build>
