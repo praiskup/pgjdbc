@@ -22,7 +22,7 @@ import java.util.Hashtable;
  * This class is an OSGi Bundle Activator and should only be used internally by the OSGi Framework
  */
 public class PGBundleActivator implements BundleActivator {
-  private ServiceRegistration<?> _registration;
+  private ServiceRegistration _registration;
 
   public void start(BundleContext context) throws Exception {
     Dictionary<String, Object> properties = new Hashtable<String, Object>();
