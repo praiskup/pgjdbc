@@ -129,7 +129,9 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <configuration>
               <excludes combine.children="append">
-                <exclude>org/postgresql/sspi/*.java</exclude>
+                <exclude>org/postgresql/sspi/NTDSAPI.java</exclude>
+                <exclude>org/postgresql/sspi/NTDSAPIWrapper.java</exclude>
+                <exclude>org/postgresql/sspi/SSPIClient.java</exclude>
               </excludes>
             </configuration>
           </plugin>
